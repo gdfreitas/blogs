@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Accesibility Live Regions</title>
+
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-size: 8rem;
+        font-family: sans-serif;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div id="clock" role="timer" aria-live="polite" aria-atomic="true">
+      <span id="clock-hours">00</span>:<span id="clock-mins">00</span>:<span id="clock-secs">00</span>
+    </div>
+
+    <script>
+      const updateClock = () => {
+        const now = new Date();
+        document.getElementById('clock-hours').innerHTML = now.getHours();
+        document.getElementById('clock-mins').innerHTML = ("0" + now.getMinutes()).substr(-2);
+        document.getElementById('clock-secs').innerHTML = ("0" + now.getSeconds()).substr(-2);
+      }
+
+      updateClock();
+
+      // updates every 10 seconds
+      setInterval(updateClock, 10000);
+    </script>
+  </body>
+
+</html>
